@@ -3,8 +3,8 @@ import RPi.GPIO as GPIO  # For controlling Raspberry Pi GPIO pins
 import time  # For adding delays in the loop
 
 # Configuration constants
-# GPIO18 (Pin 12) is being used for PWM fan control
-FAN_PIN = 18
+# GPIO12 is being used for PWM fan control
+FAN_PIN = 12
 # Fan will turn on at full speed when temperature reaches 50°C
 TEMP_HIGH = 50.0
 # Fan will run at 50% when temperature is between 42°C and 50°C
