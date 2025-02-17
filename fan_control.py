@@ -7,10 +7,10 @@ import time  # For adding delays in the loop
 FAN_PIN = 12
 # Fan will turn on at full speed when temperature reaches 50°C
 TEMP_HIGH = 50.0
-# Fan will run at 50% when temperature is between 42°C and 50°C
+# Fan will run at 50% when temperature is between 40°C and 50°C
 TEMP_MEDIUM = 45.0
-# Fan will stop completely when temperature drops below 42°C
-TEMP_OFF = 42.0
+# Fan will stop completely when temperature drops below 40°C
+TEMP_OFF = 40.0
 # PWM frequency in Hz - determines how many times per second the signal switches
 PWM_FREQ = 25
 
