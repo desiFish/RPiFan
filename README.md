@@ -20,10 +20,43 @@ RPiFan is an intelligent temperature control system for Raspberry Pi that automa
 
 ## 🛠️ Setup Instructions
 
+### Hardware Setup
+This project utilizes the following components:
+
+- **Fan**: [Official Raspberry Pi 4 Case Fan](https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/) (extracted from its original housing)
+- **Case**: [Official Raspberry Pi Zero Case](https://robu.in/product/official-raspberry-pi-zero-case/)
+- **Modification Details**:
+  - Custom ventilation hole cut in the official case lid
+  - Fan mounted directly above the CPU using hot glue
+  - Clean, professional finish maintaining the original case aesthetics
+
+> 📸 *Reference images showing the modification process and final setup can be found in the gallery below*
+
+### Gallery
+<table>
+  <tr>
+    <td width="33%">
+      <img src="resources/x1.jpg" alt="Inside" width="100%"/>
+      <p align="center"><em>Inside</em></p>
+    </td>
+    <td width="33%">
+      <img src="resources/x2.jpg" alt="Front View" width="100%"/>
+      <p align="center"><em>Front View</em></p>
+    </td>
+    <td width="33%">
+      <img src="resources/x3.jpg" alt="Top View" width="100%"/>
+      <p align="center"><em>Top View</em></p>
+    </td>
+  </tr>
+</table>
+
 ### Hardware Requirements
 - Raspberry Pi (any model)
 - PWM-compatible cooling fan
-- Connection to GPIO pin 12 (BCM mode)
+- Connections:
+  - PWM control wire to GPIO pin 12 (BCM mode)
+  - Power wire to 5V pin
+  - Ground wire to GND pin
 
 ### Software Installation
 1. Clone the repository:
