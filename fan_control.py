@@ -12,7 +12,7 @@ TEMP_MEDIUM = 45.0
 # Fan will stop completely when temperature drops below 42°C
 TEMP_OFF = 42.0
 # PWM frequency in Hz - determines how many times per second the signal switches
-PWM_FREQ = 25
+PWM_FREQ = 100
 
 
 def setup():
