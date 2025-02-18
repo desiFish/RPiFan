@@ -36,21 +36,23 @@ def get_cpu_temp():
         return float(f.read()) / 1000
 
 
-def calculate_pwm_duty(temp):
+def calculate_pwm_duty(temp, is_running):
     """
-    Calculate PWM duty cycle based on temperature
-    Returns: PWM duty cycle percentage (0-100)
+    Calculate PWM duty cycle based on temperature with hysteresis
+    Returns: (PWM duty cycle percentage (0-100), new running state)
     """
     if temp >= TEMP_HIGH:
-        return 100
+        return 100, True
     elif temp >= TEMP_MEDIUM:
         # Calculate proportional speed between 50% and 100%
         temp_range = TEMP_HIGH - TEMP_MEDIUM
         temp_offset = temp - TEMP_MEDIUM
-        return 50 + (temp_offset / temp_range) * 50
+        return (50 + (temp_offset / temp_range) * 50), True
     elif temp <= TEMP_OFF:
-        return 0
-    return 50
+        return 0, False
+    else:
+        # Between TEMP_OFF and TEMP_MEDIUM, maintain previous state
+        return (50 if is_running else 0), is_running
 
 
 def main():
@@ -58,22 +60,21 @@ def main():
     Main program loop: monitors temperature and controls fan
     """
     try:
-        fan = setup()  # Initialize GPIO and get PWM object
-        fan.start(0)  # Start PWM with 0% duty cycle (fan off)
+        fan = setup()
+        fan.start(0)
+        is_running = False  # Track fan state
 
         while True:
-            temp = get_cpu_temp()  # Get current CPU temperature
-            duty_cycle = calculate_pwm_duty(temp)
+            temp = get_cpu_temp()
+            duty_cycle, is_running = calculate_pwm_duty(temp, is_running)
             fan.ChangeDutyCycle(duty_cycle)
-            time.sleep(2)  # Wait 2 seconds before next temperature check
+            time.sleep(2)
 
     except KeyboardInterrupt:
-        # Handle Ctrl+C gracefully
         print("\nStopping fan control")
     finally:
-        # Clean up resources
-        fan.stop()  # Stop PWM
-        GPIO.cleanup()  # Release GPIO resources
+        fan.stop()
+        GPIO.cleanup()
 
 
 # Run the main function if this script is executed directly
