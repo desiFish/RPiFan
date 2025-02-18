@@ -79,7 +79,7 @@ This project utilizes the following components:
 ### Software Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/RPiFan.git
+   git clone https://github.com/desiFish/RPiFan.git
    cd RPiFan
    ```
 
