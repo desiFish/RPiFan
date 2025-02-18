@@ -41,10 +41,12 @@ This project utilizes the following components:
 
 - **Modification Details**:
   - Custom ventilation hole cut in the official case lid
+  - Additional small ventilation holes in rows under the fan area for enhanced airflow
+  - Holes pattern helps hot air exit more efficiently (see gallery for pattern details)
   - Fan mounted directly above the CPU using hot glue
   - Clean, professional finish maintaining the original case aesthetics
 
-> 📸 *Reference images showing the modification process, heatsink placement, and final setup can be found in the gallery below*
+> 📸 *Reference images showing the modification process, ventilation hole pattern, heatsink placement, and final setup can be found in the gallery below*
 
 ### Gallery
 <table>
@@ -105,6 +107,16 @@ You can modify the following constants in `fan_control.py`:
 - `TEMP_MEDIUM`: Temperature threshold for half speed (default: 45°C)
 - `TEMP_OFF`: Temperature threshold to turn off fan (default: 42°C)
 - `PWM_FREQ`: PWM frequency in Hz (default: 25Hz)
+
+## 🙏 Attribution
+If you find this project useful and use it in your work, we kindly request that you include a reference back to this project. Whether you're:
+- Writing a blog post
+- Creating a video tutorial
+- Publishing an article
+- Building upon this work
+- Sharing on social media
+
+Please add a link to this repository. Your attribution, however small, helps our project grow and reach more makers in the community.
 
 ## 📝 License
 
