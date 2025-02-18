@@ -11,10 +11,11 @@ RPiFan is an intelligent temperature control system for Raspberry Pi that automa
 
 ## 🔥 Features
 - **Automatic Temperature Monitoring**: Continuously monitors CPU temperature
-- **Smart Fan Control**: Three-stage PWM fan speed control
+- **Smart Fan Control**: Advanced PWM fan speed control
   - Full speed (100%) above 50°C
-  - Half speed (50%) between 45°C and 50°C
+  - Gradual speed increase from 50% to 100% between 45°C and 50°C
   - Fan off below 42°C
+  - Linear interpolation for smooth transitions
 - **Resource Efficient**: Minimal CPU usage with 2-second polling interval
 - **Safe Operation**: Includes fail-safes and proper GPIO cleanup
 

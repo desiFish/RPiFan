@@ -36,6 +36,23 @@ def get_cpu_temp():
         return float(f.read()) / 1000
 
 
+def calculate_pwm_duty(temp):
+    """
+    Calculate PWM duty cycle based on temperature
+    Returns: PWM duty cycle percentage (0-100)
+    """
+    if temp >= TEMP_HIGH:
+        return 100
+    elif temp >= TEMP_MEDIUM:
+        # Calculate proportional speed between 50% and 100%
+        temp_range = TEMP_HIGH - TEMP_MEDIUM
+        temp_offset = temp - TEMP_MEDIUM
+        return 50 + (temp_offset / temp_range) * 50
+    elif temp <= TEMP_OFF:
+        return 0
+    return 50
+
+
 def main():
     """
     Main program loop: monitors temperature and controls fan
@@ -46,15 +63,8 @@ def main():
 
         while True:
             temp = get_cpu_temp()  # Get current CPU temperature
-
-            # Temperature control logic
-            if temp >= TEMP_HIGH:
-                fan.ChangeDutyCycle(100)  # Full speed when hot
-            elif temp >= TEMP_MEDIUM:
-                fan.ChangeDutyCycle(50)  # Half speed when warm
-            elif temp <= TEMP_OFF:
-                fan.ChangeDutyCycle(0)  # Stop fan when cool
-
+            duty_cycle = calculate_pwm_duty(temp)
+            fan.ChangeDutyCycle(duty_cycle)
             time.sleep(2)  # Wait 2 seconds before next temperature check
 
     except KeyboardInterrupt:
