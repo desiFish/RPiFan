@@ -67,7 +67,9 @@ This project utilizes the following components:
 </table>
 
 ### Hardware Requirements
-- Raspberry Pi (any model)
+- **Platform**:
+  - Developed and tested on Raspberry Pi Zero 2 W
+  - Compatible with all Raspberry Pi Single Board Computers
 - PWM-compatible cooling fan
 - Connections:
   - PWM control wire to GPIO pin 12 (BCM mode)
