@@ -51,17 +51,21 @@ This project utilizes the following components:
 ### Gallery
 <table>
   <tr>
-    <td width="33%">
+    <td width="25%">
       <img src="resources/x1.jpg" alt="Inside" width="100%"/>
       <p align="center"><em>Inside</em></p>
     </td>
-    <td width="33%">
+    <td width="25%">
       <img src="resources/x2.jpg" alt="Front View" width="100%"/>
       <p align="center"><em>Front View</em></p>
     </td>
-    <td width="33%">
+    <td width="25%">
       <img src="resources/x3.jpg" alt="Top View" width="100%"/>
       <p align="center"><em>Top View</em></p>
+    </td>
+    <td width="25%">
+      <img src="resources/x4.jpg" alt="Case Cutting Guide" width="100%"/>
+      <p align="center"><em>Case Cutting Location</em></p>
     </td>
   </tr>
 </table>
