@@ -11,10 +11,13 @@ RPiFan is an intelligent temperature control system for Raspberry Pi that automa
 
 ## 🔥 Features
 - **Automatic Temperature Monitoring**: Continuously monitors CPU temperature
-- **Smart Fan Control**: Advanced PWM fan speed control
+- **Smart Fan Control**: Advanced PWM fan speed control with hysteresis
   - Full speed (100%) above 50°C
   - Gradual speed increase from 50% to 100% between 45°C and 50°C
-  - Fan off below 42°C
+  - Intelligent hysteresis control:
+    - Fan activates at 45°C
+    - Stays running until temperature drops below 42°C
+    - Prevents rapid on/off cycling
   - Linear interpolation for smooth transitions
 - **Resource Efficient**: Minimal CPU usage with 2-second polling interval
 - **Safe Operation**: Includes fail-safes and proper GPIO cleanup
@@ -26,12 +29,22 @@ This project utilizes the following components:
 
 - **Fan**: [Official Raspberry Pi 4 Case Fan](https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/) (extracted from its original housing)
 - **Case**: [Official Raspberry Pi Zero Case](https://robu.in/product/official-raspberry-pi-zero-case/)
+- **Heatsinks**: Position heatsinks vertically as shown in the gallery images
+  - Main processor heatsink should match or exceed the CPU chip dimensions for optimal heat transfer
+  - Vertical alignment allows optimal airflow through the fins
+  - Ensures maximum heat dissipation with the fan's airflow pattern
+  - See gallery images for correct placement orientation
+
+> 🔍 **Technical Notes on Cooling**:
+> - The processor heatsink size is crucial - larger contact area with the CPU means better heat dissipation
+> - While the SD card and its port don't generate significant heat themselves, they are connected to the PCB's ground plane (thick copper cladding). This connection causes the SD card port to heat up when the main PCB temperature rises. Adding an inexpensive aluminum heatsink (costing less than ₹20) over the SD card port helps dissipate this conducted heat more effectively, contributing to overall better thermal management.
+
 - **Modification Details**:
   - Custom ventilation hole cut in the official case lid
   - Fan mounted directly above the CPU using hot glue
   - Clean, professional finish maintaining the original case aesthetics
 
-> 📸 *Reference images showing the modification process and final setup can be found in the gallery below*
+> 📸 *Reference images showing the modification process, heatsink placement, and final setup can be found in the gallery below*
 
 ### Gallery
 <table>
@@ -79,6 +92,10 @@ This project utilizes the following components:
    ```bash
    @reboot /home/admin/projects/RPiFan/fanService.sh
    ```
+   Save and exit nano editor:
+   - Press `Ctrl + X` to exit
+   - Press `Y` to confirm changes
+   - Press `Enter` to save
 
 > 💡 For detailed help with startup configuration, check out [this Instructables guide](https://www.instructables.com/Raspberry-Pi-Launch-Python-script-on-startup/)
 
